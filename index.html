@@ -807,6 +807,12 @@ main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
     const dt = parseDate(d);
     return `${dt.getMonth()+1}. ${pad2(dt.getDate())} <em>${WEEK[dt.getDay()]}</em>`;
   }
+  function nameJosa(name){
+    const s = String(name || '');
+    const c = s.charCodeAt(s.length - 1);
+    const batchim = c >= 0xAC00 && c <= 0xD7A3 ? (c - 0xAC00) % 28 !== 0 : false;
+    return s + (batchim ? '이' : '가');
+  }
   function authorMark(a){
     return a === '인웅'
       ? `<i class="av b" style="background:#6E7C6A">인</i>`
@@ -824,10 +830,10 @@ main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
       <h2>${esc(it.title || '이름 없는 하루')}</h2>
       ${it.thumb
         ? `<div class="photo"><img src="${esc(it.thumb)}" alt="${esc(it.title)} 사진" loading="lazy"><span class="cap">${esc((it.date||'').replace(/-/g,' · '))}</span></div>`
-        : `<div class="photo blank">${SPRIG}</div>`}
+        : ''}
       ${memo ? `<p class="memo">${esc(memo)}</p>` : ''}
       <div class="rec-foot">
-        <span class="who">${authorMark(it.author)}${esc(it.author || '지애')}가 남김</span>
+        <span class="who">${authorMark(it.author)}${esc(nameJosa(it.author || '지애'))} 남김</span>
         <span class="dot">·</span>
         <span>${photos ? '사진 ' + photos + '장' : '글만'}</span>
         <span class="sp"></span>
@@ -1056,7 +1062,8 @@ main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
   async function saveForm(e){
     e && e.preventDefault();
     if (state.draft.busy) return;
-    const date = $('#fDate').value || todayStr();
+    const dateRaw = ($('#fDate').value || '').trim();
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(dateRaw) ? dateRaw : '';
     const place = $('#fPlace').value.trim();
     const title = $('#fTitle').value.trim();
     const memo = $('#fMemo').value.trim();
@@ -1066,6 +1073,12 @@ main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
     const wasDetailOpen = !$('#detail').hidden;
     const createdAt = state.draft.createdAt || new Date().toISOString();
 
+    if (!date){
+      err.hidden = false;
+      err.textContent = '날짜를 골라 주세요.';
+      $('#fDate').focus();
+      return;
+    }
     if (!title){
       err.hidden = false;
       err.textContent = '제목을 한 줄 적어 주세요.';
@@ -1169,7 +1182,7 @@ main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
           <button class="d-photo" type="button" data-action="view-photo" data-i="${i}" aria-label="사진 ${i+1} 크게 보기">
             <img src="${esc(p.src)}" alt="${esc(rec.title)} 사진 ${i+1}" loading="${i > 1 ? 'lazy' : 'eager'}">
           </button>`).join('')}</div>`
-      : `<div class="d-empty-photo" style="margin-top:18px">${SPRIG}</div>`;
+      : '';
 
     $('#detailBody').innerHTML = `
       <div class="d-head">
@@ -1177,7 +1190,7 @@ main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
         <span class="date">${(() => { const dt = parseDate(rec.date); return `${dt.getFullYear()}. ${dt.getMonth()+1}. ${pad2(dt.getDate())} <em>${WEEK[dt.getDay()]}요일</em>`; })()}</span>
       </div>
       <h2 class="d-title">${esc(rec.title || '이름 없는 하루')}</h2>
-      <div class="d-who">${authorMark(rec.author)}${esc(rec.author || '지애')}가 남김 <span class="dot">·</span> ${photos.length ? '사진 ' + photos.length + '장' : '글만'}</div>
+      <div class="d-who">${authorMark(rec.author)}${esc(nameJosa(rec.author || '지애'))} 남김 <span class="dot">·</span> ${photos.length ? '사진 ' + photos.length + '장' : '글만'}</div>
       ${grid}
       ${rec.memo ? `<p class="d-memo">${esc(rec.memo)}</p>` : ''}
       <div class="d-foot">
