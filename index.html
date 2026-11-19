@@ -36,6 +36,8 @@ body::before{
     radial-gradient(420px 300px at 104% 6%, var(--glow) 0%, rgba(255,255,255,0) 62%);
 }
 body.lock-scroll{overflow:hidden}
+html.embed{scrollbar-width:none}
+html.embed::-webkit-scrollbar{display:none}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 input,textarea{font:inherit;color:inherit}
 img{display:block;max-width:100%}
@@ -279,6 +281,7 @@ main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
   width:100%;padding:11px 13px;border-radius:13px;background:#fff;border:1px solid var(--line-2);
   color:var(--ink);font-size:14px;line-height:1.6;transition:border-color .15s, box-shadow .15s;
 }
+.input::placeholder,.area::placeholder{color:var(--faint);opacity:1}
 .input:focus,.area:focus{outline:none;border-color:#AFC1CD;box-shadow:0 0 0 3px rgba(86,105,119,.1)}
 .area{min-height:90px;resize:vertical}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -1379,6 +1382,7 @@ main{max-width:760px;margin:0 auto;padding:6px 22px 60px}
   /* ---------------------------------------------------------------
      시작
   --------------------------------------------------------------- */
+  if (window.self !== window.top) document.documentElement.classList.add('embed');
   renderDots();
   if (sessionStorage.getItem(UNLOCK_KEY) === '1'){
     $('#lock').classList.add('gone');
