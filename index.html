@@ -202,7 +202,8 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
 
 /* empty / error / skeleton */
 .empty{
-  text-align:center;padding:54px 18px 40px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  min-height:calc(100dvh - 280px);text-align:center;padding:32px 18px;
 }
 .empty-mark{
   width:62px;height:62px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;
@@ -211,6 +212,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
 }
 .empty h2{margin:0;font-family:var(--serif);font-weight:600;font-size:21px;color:var(--ink);letter-spacing:-.01em}
 .empty p{margin:12px 0 26px;font-size:12.5px;line-height:1.85;color:var(--muted)}
+.empty-mark,.empty h2,.empty p{max-width:340px}
 .btn-primary{
   display:inline-flex;align-items:center;justify-content:center;gap:7px;
   height:50px;padding:0 22px;border-radius:16px;background:var(--accent);color:#fff;
