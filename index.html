@@ -7,10 +7,10 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#2A4A8A">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json?v=pin2024b">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2024b">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2024b">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2024b">
+<link rel="manifest" href="manifest.json?v=pin2024c">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2024c">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2024c">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2024c">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -270,7 +270,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
 .fab{
   position:fixed;left:0;right:0;bottom:0;z-index:22;
   padding:12px 18px calc(12px + env(safe-area-inset-bottom));
-  background:linear-gradient(180deg, rgba(42,74,138,0) 0%, rgba(42,74,138,.95) 34%, var(--bg) 78%);
+  background:linear-gradient(180deg, rgba(40,69,127,0) 0%, rgba(40,69,127,.95) 34%, #28457F 78%);
 }
 .fab button{width:100%;max-width:420px;margin:0 auto;display:flex;height:52px;border-radius:17px}
 @media(min-width:720px){.fab{display:none}}
@@ -1422,7 +1422,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js?v=pin2024b', { scope: './', updateViaCache: 'none' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=pin2024c', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
