@@ -20,6 +20,7 @@
 ## 아이콘·홈 화면 앱
 
 - 아이콘: `icon-512.png`, `icon-192.png`, `icon-512-maskable.png`, `apple-touch-icon.png`, `favicon.png`, `favicon-32.png` (1024 원본에서 축소)
+- 아이콘 바탕: `#FDD835`(구글 옐로 `#FBBC04`보다 한 단계 밝은 노랑) 위에 원래 나뭇잎 마크(`#2E3A43`)
 - `manifest.json`: 이름 `여백`, `display: standalone`, 시작 주소 `./`
 - `sw.js`: 캐시를 쓰지 않는 최소 서비스 워커. 홈 화면 '앱 설치'가 가능하도록 등록만 합니다.
 - 안드로이드 크롬에서 주소를 열고 메뉴 → `홈 화면에 추가`(또는 `앱 설치`).
