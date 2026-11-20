@@ -7,10 +7,10 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#334A70">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json?v=forsythia">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=forsythia">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=forsythia">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=forsythia">
+<link rel="manifest" href="manifest.json?v=noleaf">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=noleaf">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=noleaf">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=noleaf">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,7 +59,6 @@ img{display:block;max-width:100%}
 .leaf-sprite{position:absolute;width:0;height:0;overflow:hidden}
 .leaf{position:absolute;pointer-events:none;display:block}
 .leaf-title{position:static;display:inline-block;width:14px;height:14px;margin-left:5px;vertical-align:3px;color:var(--leaf);transform:rotate(8deg)}
-.leaf-maple-rec{right:-9px;top:-11px;width:48px;height:48px;color:var(--leaf);opacity:.8;transform:rotate(14deg);z-index:0}
 .mleaf{width:13px;height:13px;flex:0 0 auto;display:block;color:var(--leaf);margin:0 -3px 0 -2px}
 
 /* ============ lock ============ */
@@ -852,7 +851,6 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     const photos = Number(it.photoCount || 0);
     const memo = it.memoPreview || '';
     return `<div class="rec" role="button" tabindex="0" data-action="open" data-id="${esc(it.id)}" aria-label="${esc(it.title)} 기록 열기">
-      <svg class="leaf leaf-maple-rec" aria-hidden="true"><use href="#leaf-maple"></use></svg>
       <div class="rec-top">
         ${it.place ? `<span class="tag">${ICON_PIN}${esc(it.place)}</span>` : `<span class="tag">${ICON_PIN}여백</span>`}
         <span class="date">${dateShort(it.date)}</span>
@@ -1422,7 +1420,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js?v=forsythia', { scope: './', updateViaCache: 'none' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=noleaf', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
