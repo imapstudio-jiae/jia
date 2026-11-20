@@ -12,6 +12,7 @@
 </style>
 </head>
 <body>
-<div class="wrap"><iframe src="./index.html?preview=mobile" title="여백 모바일 미리보기"></iframe></div>
+<div class="wrap"><iframe id="pv" title="여백 모바일 미리보기"></iframe></div>
+<script>document.getElementById('pv').src = './index.html?preview=mobile&cb=' + Date.now();</script>
 </body>
 </html>
