@@ -7,10 +7,10 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#162B54">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json?v=navy2">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=navy2">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=navy2">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=navy2">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -58,7 +58,6 @@ img{display:block;max-width:100%}
 /* ============ 단풍 포인트 (포인트 4곳만) ============ */
 .leaf-sprite{position:absolute;width:0;height:0;overflow:hidden}
 .leaf{position:absolute;pointer-events:none;display:block}
-.leaf-maple-lock{right:-46px;bottom:-44px;width:196px;height:196px;color:#D62828;transform:rotate(-12deg)}
 .leaf-title{position:static;display:inline-block;width:14px;height:14px;margin-left:5px;vertical-align:3px;color:#E85D04;transform:rotate(8deg)}
 .leaf-maple-rec{right:-9px;top:-11px;width:48px;height:48px;color:#F59E0B;transform:rotate(14deg);z-index:0}
 .mleaf{width:13px;height:13px;flex:0 0 auto;display:block;color:#D62828;margin:0 -3px 0 -2px}
@@ -477,7 +476,6 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
 
 <!-- ================= 잠금 ================= -->
 <div id="lock">
-  <svg class="leaf leaf-maple-lock" aria-hidden="true"><use href="#leaf-maple"></use></svg>
   <div class="lock-inner">
     <div class="lock-mark">
       <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true">
@@ -1424,7 +1422,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js', { scope: './' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=navy2', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
