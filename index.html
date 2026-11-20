@@ -7,10 +7,10 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#2A4A8A">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json?v=pin2024c">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2024c">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2024c">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2024c">
+<link rel="manifest" href="manifest.json?v=pin2024d">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2024d">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2024d">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2024d">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -139,9 +139,9 @@ img{display:block;max-width:100%}
 }
 .pill:hover{background:rgba(255,255,255,.24);color:#FFFFFF;border-color:#F0C4DA}
 .pill svg{width:12px;height:12px}
-.pill.solid{background:#E6CD91;border-color:#E6CD91;color:#111111;font-weight:600;
+.pill.solid{background:#B5E2FA;border-color:#B5E2FA;color:#111111;font-weight:600;
   box-shadow:0 10px 20px -12px rgba(3,8,22,.75)}
-.pill.solid:hover{background:#DFC383;border-color:#DFC383;color:#111111}
+.pill.solid:hover{background:#9FD5F6;border-color:#9FD5F6;color:#111111}
 
 /* ============ main ============ */
 #app{display:flex;flex-direction:column;min-height:100dvh}
@@ -235,12 +235,12 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
 .empty-mark,.empty h2,.empty p{max-width:340px}
 .btn-primary{
   display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  height:50px;padding:0 22px;border-radius:16px;background:#E6CD91;color:#111111;
+  height:50px;padding:0 22px;border-radius:16px;background:#B5E2FA;color:#111111;
   font-size:14px;font-weight:600;letter-spacing:.005em;
   box-shadow:0 14px 26px -14px rgba(3,8,22,.85), inset 0 1px 0 rgba(255,255,255,.16);
   transition:background .15s, transform .15s;
 }
-.btn-primary:hover{background:#DFC383}
+.btn-primary:hover{background:#9FD5F6}
 .btn-primary:active{transform:translateY(1px)}
 .btn-primary svg{width:13px;height:13px}
 .state-card{
@@ -1422,7 +1422,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js?v=pin2024c', { scope: './', updateViaCache: 'none' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=pin2024d', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
