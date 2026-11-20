@@ -7,10 +7,10 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#162B54">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json?v=pin2030">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2030">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2030">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2030">
+<link rel="manifest" href="manifest.json?v=pin2024">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2024">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2024">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2024">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -689,7 +689,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   const SB_KEY  = 'sb_publishable_WBNiCS21h_NTVBLOnKNJiw_o0R8BPc3';
   const TABLE   = 'studio_schedule';
   const IDX_KEY = 'trip_album_index_v1';
-  const PASSWORD = '2030';
+  const PASSWORD = '2024';
   const UNLOCK_KEY = 'yeobaek_unlocked_v1';
   const AUTHOR_KEY = 'yeobaek_author_v1';
   const MAX_BYTES = 5 * 1024 * 1024;   // 한 기록당 5MB
@@ -1422,7 +1422,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js?v=pin2030', { scope: './', updateViaCache: 'none' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=pin2024', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
