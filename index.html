@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#162B54">
+<meta name="theme-color" content="#2A4A8A">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json?v=pin2024">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2024">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2024">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2024">
+<link rel="manifest" href="manifest.json?v=pin2024b">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2024b">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2024b">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2024b">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
-  --bg:#162B54; --bg2:#1B366B; --glow:#2A4B8F; --paper:#FFFFFF; --card:#F7F1F6; --badge:#FBE8F1;
+  --bg:#2A4A8A; --bg2:#345AA0; --glow:#4065B4; --paper:#FFFFFF; --card:#F7F1F6; --badge:#FBE8F1;
   --line:#EAD9E5; --line-2:#DCC4D6; --plum:#8E2464; --plum-2:#9D286F;
   --accent:#D62828; --accent-2:#E85D04; --accent-deep:#8E2464;
   --gold:#F59E0B; --gold-lt:#FFD166; --clay:#B3261E;
@@ -33,7 +33,7 @@
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0;min-height:100dvh;
-  background:linear-gradient(180deg,#162B54 0%, #1B366B 48%, #182F5F 76%, #152A50 100%) fixed;
+  background:linear-gradient(180deg,#2A4A8A 0%, #345AA0 48%, #2E5093 76%, #28457F 100%) fixed;
   color:var(--on-dark);
   font-family:var(--sans);font-size:15px;line-height:1.6;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
@@ -69,7 +69,7 @@ img{display:block;max-width:100%}
   background:
     radial-gradient(620px 420px at 16% -6%, rgba(142,36,100,.45) 0%, rgba(0,0,0,0) 68%),
     radial-gradient(520px 380px at 108% 6%, rgba(40,78,150,.68) 0%, rgba(0,0,0,0) 66%),
-    linear-gradient(180deg,#162B54 0%,#1B366B 58%,#152A50 100%);
+    linear-gradient(180deg,#2A4A8A 0%,#345AA0 58%,#28457F 100%);
   overflow:hidden;
 }
 #lock.gone{display:none}
@@ -111,7 +111,7 @@ img{display:block;max-width:100%}
 /* ============ header ============ */
 .top{
   position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top);
-  background:linear-gradient(180deg, rgba(22,43,84,.97) 0%, rgba(24,46,90,.87) 68%, rgba(22,43,84,0) 100%);
+  background:linear-gradient(180deg, rgba(42,74,138,.97) 0%, rgba(48,84,152,.87) 68%, rgba(42,74,138,0) 100%);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   overflow:hidden;
 }
@@ -139,9 +139,9 @@ img{display:block;max-width:100%}
 }
 .pill:hover{background:rgba(255,255,255,.24);color:#FFFFFF;border-color:#F0C4DA}
 .pill svg{width:12px;height:12px}
-.pill.solid{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff;font-weight:600;
+.pill.solid{background:#E6CD91;border-color:#E6CD91;color:#111111;font-weight:600;
   box-shadow:0 10px 20px -12px rgba(3,8,22,.75)}
-.pill.solid:hover{background:#7A1E55;border-color:#7A1E55;color:#fff}
+.pill.solid:hover{background:#DFC383;border-color:#DFC383;color:#111111}
 
 /* ============ main ============ */
 #app{display:flex;flex-direction:column;min-height:100dvh}
@@ -235,12 +235,12 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
 .empty-mark,.empty h2,.empty p{max-width:340px}
 .btn-primary{
   display:inline-flex;align-items:center;justify-content:center;gap:7px;
-  height:50px;padding:0 22px;border-radius:16px;background:var(--plum);color:#fff;
+  height:50px;padding:0 22px;border-radius:16px;background:#E6CD91;color:#111111;
   font-size:14px;font-weight:600;letter-spacing:.005em;
   box-shadow:0 14px 26px -14px rgba(3,8,22,.85), inset 0 1px 0 rgba(255,255,255,.16);
   transition:background .15s, transform .15s;
 }
-.btn-primary:hover{background:#7A1E55}
+.btn-primary:hover{background:#DFC383}
 .btn-primary:active{transform:translateY(1px)}
 .btn-primary svg{width:13px;height:13px}
 .state-card{
@@ -270,7 +270,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
 .fab{
   position:fixed;left:0;right:0;bottom:0;z-index:22;
   padding:12px 18px calc(12px + env(safe-area-inset-bottom));
-  background:linear-gradient(180deg, rgba(22,43,84,0) 0%, rgba(22,43,84,.95) 34%, var(--bg) 78%);
+  background:linear-gradient(180deg, rgba(42,74,138,0) 0%, rgba(42,74,138,.95) 34%, var(--bg) 78%);
 }
 .fab button{width:100%;max-width:420px;margin:0 auto;display:flex;height:52px;border-radius:17px}
 @media(min-width:720px){.fab{display:none}}
@@ -1422,7 +1422,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js?v=pin2024', { scope: './', updateViaCache: 'none' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=pin2024b', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
