@@ -7,10 +7,10 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#162B54">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json?v=navy2">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=navy2">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=navy2">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=navy2">
+<link rel="manifest" href="manifest.json?v=pin2030">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=pin2030">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=pin2030">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=pin2030">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -488,8 +488,8 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     </div>
     <h1>여백</h1>
     <p class="sub">일상에 쉼표를 그리는 기록</p>
-    <div class="dots" id="dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <p class="sr" id="lockLive">비밀번호 6자리를 입력하세요</p>
+    <div class="dots" id="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <p class="sr" id="lockLive">비밀번호 4자리를 입력하세요</p>
     <p class="lock-msg" id="lockMsg"></p>
     <div class="keypad" id="keypad">
       <button type="button" data-k="1">1</button><button type="button" data-k="2">2</button><button type="button" data-k="3">3</button>
@@ -689,7 +689,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   const SB_KEY  = 'sb_publishable_WBNiCS21h_NTVBLOnKNJiw_o0R8BPc3';
   const TABLE   = 'studio_schedule';
   const IDX_KEY = 'trip_album_index_v1';
-  const PASSWORD = '202424';
+  const PASSWORD = '2030';
   const UNLOCK_KEY = 'yeobaek_unlocked_v1';
   const AUTHOR_KEY = 'yeobaek_author_v1';
   const MAX_BYTES = 5 * 1024 * 1024;   // 한 기록당 5MB
@@ -766,11 +766,11 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   function key(k){
     const msg = $('#lockMsg');
     if (k === 'del'){ entered = entered.slice(0, -1); renderDots(); return; }
-    if (entered.length >= 6) return;
+    if (entered.length >= 4) return;
     entered += k;
     renderDots();
     msg.textContent = '';
-    if (entered.length === 6) setTimeout(tryUnlock, 130);
+    if (entered.length === 4) setTimeout(tryUnlock, 130);
   }
   function tryUnlock(){
     if (entered === PASSWORD){
@@ -810,7 +810,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     if ($('#lock').classList.contains('gone')) return;
     if (/^[0-9]$/.test(e.key)) key(e.key);
     else if (e.key === 'Backspace'){ e.preventDefault(); key('del'); }
-    else if (e.key === 'Enter' && entered.length === 6) tryUnlock();
+    else if (e.key === 'Enter' && entered.length === 4) tryUnlock();
   });
 
   /* ---------------------------------------------------------------
@@ -1422,7 +1422,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js?v=navy2', { scope: './', updateViaCache: 'none' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=pin2030', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
