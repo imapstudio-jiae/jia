@@ -1,9 +1,9 @@
-/* 여백 · 홈 화면 설치용 서비스 워커 (버전 noleaf-20261121 · 2026-11-21)
+/* 여백 · 홈 화면 설치용 서비스 워커 (버전 comments-20261121 · 2026-11-21)
    목적은 두 가지입니다.
    1) 안드로이드가 이 사이트를 '앱처럼 설치'할 수 있게 하는 것
    2) 옛 화면이 남지 않게 하는 것 — 캐시를 쓰지 않고, 브라우저 HTTP 캐시까지
       건너뛰어 항상 네트워크에서 새 파일을 받습니다. */
-const VERSION = 'noleaf-20261121';
+const VERSION = 'comments-20261121';
 
 self.addEventListener('install', function () {
   self.skipWaiting();

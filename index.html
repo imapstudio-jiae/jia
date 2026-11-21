@@ -7,10 +7,10 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#334A70">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json?v=noleaf">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=noleaf">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=noleaf">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=noleaf">
+<link rel="manifest" href="manifest.json?v=comments">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=comments">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=comments">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=comments">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -412,6 +412,67 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   background:linear-gradient(150deg,#F7FBFE,#EDF6FC 62%,#E4F2FB);
 }
 
+/* ============ comments ============ */
+.cm{margin-top:28px;padding-top:20px;border-top:1.5px solid var(--edge)}
+.cm-head{display:flex;align-items:center;gap:8px;margin-bottom:13px}
+.cm-head h3{
+  margin:0;font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--ink);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.cm-head h3 svg{width:13px;height:13px;color:var(--leaf);transform:rotate(8deg)}
+.cm-head .cnt{
+  min-width:22px;height:22px;padding:0 7px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;
+  background:var(--badge);border:1.5px solid var(--line);color:var(--deep);
+  font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;
+}
+.cm-list{display:grid;gap:9px}
+.cm-empty{
+  margin:0;padding:16px 14px;border-radius:15px;border:1.5px dashed var(--line);background:#F7FBFE;
+  font-size:12.5px;line-height:1.75;color:var(--ink-2);text-align:center;letter-spacing:-.002em;
+}
+.cm-item{
+  display:grid;grid-template-columns:24px minmax(0,1fr);gap:2px 9px;
+  padding:11px 12px 12px;border-radius:15px;background:#F7FBFE;border:1.5px solid var(--line);
+}
+.cm-item .av{width:24px;height:24px;font-size:10px;margin-top:2px}
+.cm-top{display:flex;align-items:center;gap:7px;min-width:0;min-height:24px}
+.cm-name{font-size:12.5px;font-weight:600;color:var(--ink);letter-spacing:.01em;white-space:nowrap}
+.cm-time{font-size:10.5px;color:var(--faint);letter-spacing:.01em;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cm-del{
+  margin-left:auto;width:26px;height:26px;border-radius:9px;display:grid;place-items:center;
+  color:var(--faint);flex:0 0 auto;transition:background .15s, color .15s;
+}
+.cm-del:hover{background:#EDF6FC;color:var(--ink)}
+.cm-del svg{width:12px;height:12px}
+.cm-text{
+  grid-column:2;margin:3px 0 0;font-size:14px;line-height:1.78;color:var(--ink-2);
+  letter-spacing:-.002em;white-space:pre-wrap;word-break:break-word;
+}
+.cm-form{margin-top:14px}
+.cm-seg{display:flex;gap:7px;margin-bottom:9px}
+.cm-seg button{
+  display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 13px 0 8px;border-radius:11px;
+  border:1.5px solid var(--line);background:#FFFFFF;color:var(--ink-2);
+  font-size:12.5px;font-weight:500;letter-spacing:.01em;transition:background .15s, border-color .15s, color .15s;
+}
+.cm-seg button .av{width:20px;height:20px;font-size:9px;background:var(--edge);color:#111111}
+.cm-seg button.on{background:#C2DFEF;border-color:#C2DFEF;color:#111111;font-weight:600}
+.cm-seg button.on .av{background:var(--avatar);color:#FFFFFF}
+.cm-seg button[data-author="인웅"] .av{background:var(--gold-lt);color:#111111}
+.cm-seg button[data-author="인웅"].on .av{background:var(--avatar-2);color:#111111}
+.cm-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:end}
+.cm-area{min-height:54px;padding:11px 12px;border-radius:13px;font-size:14px;line-height:1.65;resize:vertical}
+.cm-send{
+  height:46px;padding:0 18px;border-radius:13px;background:#FFE033;color:#111111;
+  font-size:13px;font-weight:600;letter-spacing:.005em;white-space:nowrap;
+  box-shadow:0 10px 20px -16px rgba(3,8,22,.8);transition:background .15s, transform .12s;
+}
+.cm-send:hover{background:#F5CF1E}
+.cm-send:active{transform:translateY(1px)}
+.cm-send:disabled{opacity:.6;cursor:default}
+.cm-hint{margin:8px 1px 0;font-size:10.5px;line-height:1.65;color:var(--faint);letter-spacing:.01em}
+@media(max-width:400px){.cm-row{grid-template-columns:1fr}.cm-send{width:100%}}
+
 /* ============ viewer ============ */
 .viewer{
   position:fixed;inset:0;z-index:50;background:#111111;display:flex;flex-direction:column;
@@ -750,6 +811,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     loaded: false,
     error: false,
     detail: null,          // 현재 상세 기록 (photos 포함)
+    commentAuthor: null,   // 댓글 작성자 선택 (기본은 글 쓴 사람의 반대편)
     viewer: { photos: [], i: 0 },
     draft: { photos: [], editingKey: null, id: null, busy: false }
   };
@@ -835,12 +897,21 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     const dt = parseDate(d);
     return `${dt.getMonth()+1}. ${pad2(dt.getDate())} <em>${WEEK[dt.getDay()]}</em>`;
   }
+  function hasBatchim(s){
+    const str = String(s || '');
+    if (!str) return false;
+    const c = str.charCodeAt(str.length - 1);
+    return c >= 0xAC00 && c <= 0xD7A3 ? (c - 0xAC00) % 28 !== 0 : false;
+  }
   function nameJosa(name){
     const s = String(name || '');
-    const c = s.charCodeAt(s.length - 1);
-    const batchim = c >= 0xAC00 && c <= 0xD7A3 ? (c - 0xAC00) % 28 !== 0 : false;
-    return s + (batchim ? '이' : '가');
+    return s + (hasBatchim(s) ? '이' : '가');
   }
+  function nameRo(name){
+    const s = String(name || '');
+    return s + (hasBatchim(s) ? '으로' : '로');
+  }
+  const otherAuthor = (a) => (a === '인웅' ? '지애' : '인웅');
   function authorMark(a){
     return a === '인웅'
       ? `<i class="av b">인</i>`
@@ -849,6 +920,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
 
   function cardHTML(it){
     const photos = Number(it.photoCount || 0);
+    const cmCount = Number(it.commentCount || 0);
     const memo = it.memoPreview || '';
     return `<div class="rec" role="button" tabindex="0" data-action="open" data-id="${esc(it.id)}" aria-label="${esc(it.title)} 기록 열기">
       <div class="rec-top">
@@ -864,6 +936,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
         <span class="who">${authorMark(it.author)}${esc(nameJosa(it.author || '지애'))} 남김</span>
         <span class="dot">·</span>
         <span>${photos ? '사진 ' + photos + '장' : '글만'}</span>
+        ${cmCount ? `<span class="dot">·</span><span>댓글 ${cmCount}</span>` : ''}
         <span class="sp"></span>
         <span class="only">${ICON_LOCK}둘만 보기</span>
       </div>
@@ -1129,9 +1202,23 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     const key = state.draft.editingKey || `trip_${date}_${id}`;
     const photos = state.draft.photos.map(p => ({ src: p.src }));
 
+    /* 고치기 저장 때 붙어 있던 댓글이 지워지지 않게 그대로 가져온다 */
+    let comments = [];
+    if (isEdit){
+      if (state.detail && state.detail.id === id && Array.isArray(state.detail.comments)){
+        comments = state.detail.comments;
+      } else {
+        try {
+          const prev = await sbGet(key);
+          if (Array.isArray(prev?.comments)) comments = prev.comments;
+        } catch(_){}
+      }
+    }
+
     const detail = {
       id, date, place, title, memo, author,
       photos,
+      comments,
       createdAt,
       updatedAt: new Date().toISOString()
     };
@@ -1142,6 +1229,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     const indexItem = {
       id, key, date, place, title, author,
       photoCount: photos.length,
+      commentCount: comments.length,
       thumb,
       memoPreview: memo.replace(/\s+/g, ' ').slice(0, 90),
       createdAt: detail.createdAt,
@@ -1155,7 +1243,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
       try { idx = await sbGet(IDX_KEY); } catch(_){}
       const items = Array.isArray(idx?.items) ? idx.items.filter(x => x.id !== id) : state.items.filter(x => x.id !== id);
       items.push(indexItem);
-      await sbPut(IDX_KEY, { version: 1, items });
+      await sbPut(IDX_KEY, { ...(idx || {}), version: (idx && idx.version) || 1, items });
 
       state.items = items.slice().sort((a,b) => (b.date||'').localeCompare(a.date||'') || String(b.createdAt||'').localeCompare(String(a.createdAt||'')));
       state.loaded = true;
@@ -1200,6 +1288,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     }
     rec.key = item.key;
     state.detail = rec;
+    state.commentAuthor = otherAuthor(rec.author);
     renderDetail(rec);
   }
 
@@ -1225,7 +1314,8 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
         <span>${ICON_LOCK}&nbsp;두 사람만 보는 기록</span>
         <span class="sp"></span>
         <span>${shortStamp(rec.updatedAt)}</span>
-      </div>`;
+      </div>
+      ${commentsHTML(rec)}`;
     const link = $('#viewerSave');
     if (photos.length) link.href = photos[0].src;
   }
@@ -1235,6 +1325,180 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     const d = new Date(iso);
     if (isNaN(d)) return '';
     return `${d.getFullYear()}. ${d.getMonth()+1}. ${d.getDate()}. 남김`;
+  }
+
+  /* ---------------------------------------------------------------
+     댓글 (각 기록에 붙는 짧은 이야기)
+     기록 데이터의 comments 배열에 함께 저장되어 새로고침해도 남아 있다.
+  --------------------------------------------------------------- */
+  function commentList(rec){
+    return Array.isArray(rec && rec.comments)
+      ? rec.comments.filter(c => c && typeof c.text === 'string' && c.text.trim())
+      : [];
+  }
+  function cmStamp(iso){
+    const d = new Date(iso);
+    if (!iso || isNaN(d)) return '';
+    const now = new Date();
+    const head = d.getFullYear() === now.getFullYear()
+      ? `${d.getMonth()+1}. ${d.getDate()}.`
+      : `${d.getFullYear()}. ${d.getMonth()+1}. ${d.getDate()}.`;
+    return `${head} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+  }
+  function commentItemsHTML(rec){
+    const list = commentList(rec);
+    if (!list.length){
+      const base = otherAuthor(rec.author);
+      return `<p class="cm-empty">아직 댓글이 없어요.<br>${esc(nameJosa(base))} 먼저 한마디 건네 볼까요?</p>`;
+    }
+    return list.map(c => `<div class="cm-item">
+        ${authorMark(c.author)}
+        <div class="cm-top">
+          <span class="cm-name">${esc(c.author || '지애')}</span>
+          <span class="cm-time">${esc(cmStamp(c.createdAt))}</span>
+          <button class="cm-del" type="button" data-action="cm-del" data-cid="${esc(c.id)}" aria-label="${esc(c.author || '')} 댓글 지우기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <p class="cm-text">${esc(c.text)}</p>
+      </div>`).join('');
+  }
+  function commentHintText(rec){
+    const base = otherAuthor(rec.author);
+    const who = state.commentAuthor || base;
+    if (who === base) return `${nameJosa(rec.author || '지애')} 남긴 기록이라 ${nameRo(base)} 골라 두었어요. 바꿔도 괜찮아요.`;
+    return `${who} 이름으로 남아요.`;
+  }
+  function commentsHTML(rec){
+    const list = commentList(rec);
+    const base = otherAuthor(rec.author);
+    const who = state.commentAuthor || base;
+    const seg = ['지애', '인웅'].map(a => `<button type="button" data-action="cm-author" data-author="${a}" class="${a === who ? 'on' : ''}" aria-pressed="${a === who}"><span class="av">${a === '인웅' ? '인' : '지'}</span>${a}</button>`).join('');
+    return `<section class="cm" id="cm" aria-label="댓글">
+      <div class="cm-head">
+        <h3><svg aria-hidden="true"><use href="#leaf-maple"></use></svg>댓글</h3>
+        <span class="cnt" id="cmCount">${list.length}</span>
+      </div>
+      <div class="cm-list" id="cmList">${commentItemsHTML(rec)}</div>
+      <div class="cm-form">
+        <div class="cm-seg" id="cmSeg" role="group" aria-label="댓글 작성자">${seg}</div>
+        <div class="cm-row">
+          <textarea class="area cm-area" id="cmText" rows="2" maxlength="600" placeholder="짧은 한마디를 남겨 보세요"></textarea>
+          <button class="cm-send" type="button" id="cmSend" data-action="cm-send">등록</button>
+        </div>
+        <p class="cm-hint" id="cmHint">${esc(commentHintText(rec))}</p>
+      </div>
+    </section>`;
+  }
+  function refreshComments(){
+    const rec = state.detail;
+    if (!rec) return;
+    const listEl = $('#cmList');
+    if (listEl) listEl.innerHTML = commentItemsHTML(rec);
+    const cnt = $('#cmCount');
+    if (cnt) cnt.textContent = String(commentList(rec).length);
+    const hint = $('#cmHint');
+    if (hint) hint.textContent = commentHintText(rec);
+  }
+  function setCommentAuthor(a){
+    if (a !== '지애' && a !== '인웅') return;
+    state.commentAuthor = a;
+    $$('#cmSeg button').forEach(b => {
+      const on = b.dataset.author === a;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    const hint = $('#cmHint');
+    if (hint && state.detail) hint.textContent = commentHintText(state.detail);
+  }
+  async function addComment(){
+    const rec = state.detail;
+    if (!rec || !rec.key) return;
+    const ta = $('#cmText');
+    const text = (ta ? ta.value : '').trim();
+    if (!text){ toast('남길 내용을 적어 주세요.'); if (ta) ta.focus(); return; }
+    if (text.length > 600){ toast('댓글은 600자까지 남길 수 있어요.'); return; }
+    const author = state.commentAuthor || otherAuthor(rec.author);
+    const btn = $('#cmSend');
+    if (btn){ btn.disabled = true; btn.textContent = '남기는 중…'; }
+    try {
+      /* 먼저 남아 있던 댓글을 잃지 않도록 저장된 기록을 다시 읽어 더한다 */
+      const fresh = await sbGet(rec.key);
+      if (!fresh) throw new Error('record not found');
+      const comments = Array.isArray(fresh.comments) ? fresh.comments.slice() : [];
+      comments.push({ id: uid(), author, text, createdAt: new Date().toISOString() });
+      await sbPut(rec.key, { ...fresh, comments });
+      rec.comments = comments;
+      if (ta) ta.value = '';
+      refreshComments();
+      syncCommentCount(rec.id, comments.length);
+      toast('댓글을 남겼어요.');
+    } catch (err){
+      console.warn(err);
+      toast('댓글을 남기지 못했어요. 잠시 뒤 다시 시도해 주세요.');
+    } finally {
+      if (btn){ btn.disabled = false; btn.textContent = '등록'; }
+    }
+  }
+  function askDeleteComment(cid){
+    const rec = state.detail;
+    if (!rec) return;
+    const c = (Array.isArray(rec.comments) ? rec.comments : []).find(x => x && x.id === cid);
+    if (!c) return;
+    const preview = String(c.text || '').replace(/\s+/g, ' ').trim();
+    const box = document.createElement('div');
+    box.className = 'confirm';
+    box.id = 'confirmBox';
+    box.innerHTML = `<div class="confirm-box" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <h4 id="confirmTitle">이 댓글을 지울까요?</h4>
+      <p>「${esc(preview.slice(0, 60))}${preview.length > 60 ? '…' : ''}」<br>지우면 되돌릴 수 없어요.</p>
+      <div class="btns">
+        <button class="no" type="button" data-action="cancel-confirm">그대로 두기</button>
+        <button class="yes" type="button" data-action="confirm-del-comment" data-cid="${esc(cid)}">지우기</button>
+      </div>
+    </div>`;
+    document.body.appendChild(box);
+  }
+  async function doDeleteComment(cid){
+    const rec = state.detail;
+    if (!rec || !rec.key || !cid) return;
+    const btn = $('#confirmBox .yes');
+    if (btn){ btn.disabled = true; btn.textContent = '지우는 중…'; }
+    try {
+      const fresh = await sbGet(rec.key);
+      if (!fresh) throw new Error('record not found');
+      const comments = (Array.isArray(fresh.comments) ? fresh.comments : []).filter(c => c && c.id !== cid);
+      await sbPut(rec.key, { ...fresh, comments });
+      rec.comments = comments;
+      $('#confirmBox')?.remove();
+      refreshComments();
+      syncCommentCount(rec.id, comments.length);
+      toast('댓글을 지웠어요.');
+    } catch (err){
+      console.warn(err);
+      if (btn){ btn.disabled = false; btn.textContent = '지우기'; }
+      toast('지우지 못했어요. 잠시 뒤 다시 시도해 주세요.');
+    }
+  }
+  /* 목록 카드에 댓글 수를 조용히 반영한다 (실패해도 기록 자체는 그대로) */
+  async function syncCommentCount(id, count){
+    if (!id) return;
+    state.items = state.items.map(x => (x.id === id ? { ...x, commentCount: count } : x));
+    renderList();
+    try {
+      const idx = await sbGet(IDX_KEY);
+      if (!idx || !Array.isArray(idx.items)) return;
+      let hit = false;
+      const items = idx.items.map(x => {
+        if (x.id !== id) return x;
+        if (Number(x.commentCount || 0) === count) return x;
+        hit = true;
+        return { ...x, commentCount: count };
+      });
+      if (hit) await sbPut(IDX_KEY, { ...idx, items });
+    } catch (err){
+      console.warn('comment count', err);
+    }
   }
 
   function closeDetail(immediate){
@@ -1355,6 +1619,11 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     else if (a === 'delete-detail') askDelete();
     else if (a === 'cancel-delete') $('#confirmBox')?.remove();
     else if (a === 'confirm-delete') doDelete();
+    else if (a === 'cm-author') setCommentAuthor(t.dataset.author);
+    else if (a === 'cm-send') addComment();
+    else if (a === 'cm-del') askDeleteComment(t.dataset.cid);
+    else if (a === 'confirm-del-comment') doDeleteComment(t.dataset.cid);
+    else if (a === 'cancel-confirm') $('#confirmBox')?.remove();
     else if (a === 'close-form') closeForm();
     else if (a === 'pick-photos') $('#fileInput').click();
     else if (a === 'view-photo') openViewer(Number(t.dataset.i) || 0);
@@ -1386,17 +1655,21 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   });
 
   document.addEventListener('keydown', (e) => {
+    if (e.target && e.target.id === 'cmText' && e.key === 'Enter' && (e.metaKey || e.ctrlKey)){
+      e.preventDefault();
+      addComment();
+      return;
+    }
     if ((e.key === 'Enter' || e.key === ' ') && e.target.classList && e.target.classList.contains('rec')){
       e.preventDefault();
       openDetail(e.target.dataset.id);
       return;
     }
     if (e.key === 'Escape'){
-      if (!$('#confirmBox')) {
-        if (!$('#viewer').hidden) closeViewer();
-        else if (!$('#formWrap').hidden) closeForm();
-        else if (!$('#detail').hidden) closeDetail();
-      }
+      if ($('#confirmBox')) $('#confirmBox').remove();
+      else if (!$('#viewer').hidden) closeViewer();
+      else if (!$('#formWrap').hidden) closeForm();
+      else if (!$('#detail').hidden) closeDetail();
     }
     if (!$('#viewer').hidden){
       if (e.key === 'ArrowLeft') stepViewer(-1);
@@ -1420,7 +1693,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js?v=noleaf', { scope: './', updateViaCache: 'none' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=comments', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
