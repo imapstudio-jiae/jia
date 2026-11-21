@@ -7,10 +7,10 @@
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#334A70">
 <title>여백 · 일상에 쉼표를 그리는 기록</title>
-<link rel="manifest" href="manifest.json?v=comments">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=comments">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=comments">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=comments">
+<link rel="manifest" href="manifest.json?v=inungssaem">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=inungssaem">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=inungssaem">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=inungssaem">
 <meta name="application-name" content="여백">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -721,7 +721,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
         <label>작성자</label>
         <div class="seg" id="seg">
           <button type="button" data-author="지애"><span class="av">지</span>지애</button>
-          <button type="button" data-author="인웅"><span class="av">인</span>인웅</button>
+          <button type="button" data-author="인웅"><span class="av">인</span>인웅쌤</button>
         </div>
       </div>
 
@@ -911,9 +911,19 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     const s = String(name || '');
     return s + (hasBatchim(s) ? '으로' : '로');
   }
-  const otherAuthor = (a) => (a === '인웅' ? '지애' : '인웅');
+  const otherAuthor = (a) => (a === '인웅' || a === '인웅쌤' ? '지애' : '인웅');
+  /* 저장 값은 '인웅' 그대로 두고, 화면에 보여 줄 때만 '인웅쌤'으로 부른다.
+     예전에 '인웅쌤'으로 저장된 값이 있어도 같이 받아 준다. */
+  const AUTHOR_LABEL = { '지애': '지애', '인웅': '인웅쌤', '인웅쌤': '인웅쌤' };
+  function authorLabel(a){
+    const k = String(a == null ? '' : a).trim();
+    return AUTHOR_LABEL[k] || '지애';
+  }
+  const authorJosa = (a) => nameJosa(authorLabel(a));
+  const authorRo   = (a) => nameRo(authorLabel(a));
   function authorMark(a){
-    return a === '인웅'
+    const k = String(a == null ? '' : a).trim();
+    return (k === '인웅' || k === '인웅쌤')
       ? `<i class="av b">인</i>`
       : `<i class="av">지</i>`;
   }
@@ -933,7 +943,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
         : ''}
       ${memo ? `<p class="memo">${esc(memo)}</p>` : ''}
       <div class="rec-foot">
-        <span class="who">${authorMark(it.author)}${esc(nameJosa(it.author || '지애'))} 남김</span>
+        <span class="who">${authorMark(it.author)}${esc(authorJosa(it.author))} 남김</span>
         <span class="dot">·</span>
         <span>${photos ? '사진 ' + photos + '장' : '글만'}</span>
         ${cmCount ? `<span class="dot">·</span><span>댓글 ${cmCount}</span>` : ''}
@@ -967,7 +977,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
       list.innerHTML = `<div class="empty">
         <div class="empty-mark">${SPRIG}</div>
         <h2>첫 번째 여백을 남겨 보세요</h2>
-        <p>다녀온 곳의 사진과 마음을 조용히 모아 두는 곳이에요.<br>지애와 인웅, 두 사람만 볼 수 있어요.</p>
+        <p>다녀온 곳의 사진과 마음을 조용히 모아 두는 곳이에요.<br>지애와 인웅쌤, 두 사람만 볼 수 있어요.</p>
         <button class="btn-primary" type="button" data-action="new">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
           새 기록 남기기
@@ -1307,7 +1317,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
         <span class="date">${(() => { const dt = parseDate(rec.date); return `${dt.getFullYear()}. ${dt.getMonth()+1}. ${pad2(dt.getDate())} <em>${WEEK[dt.getDay()]}요일</em>`; })()}</span>
       </div>
       <h2 class="d-title">${esc(rec.title || '이름 없는 하루')}</h2>
-      <div class="d-who">${authorMark(rec.author)}${esc(nameJosa(rec.author || '지애'))} 남김 <span class="dot">·</span> ${photos.length ? '사진 ' + photos.length + '장' : '글만'}</div>
+      <div class="d-who">${authorMark(rec.author)}${esc(authorJosa(rec.author))} 남김 <span class="dot">·</span> ${photos.length ? '사진 ' + photos.length + '장' : '글만'}</div>
       ${grid}
       ${rec.memo ? `<p class="d-memo">${esc(rec.memo)}</p>` : ''}
       <div class="d-foot">
@@ -1349,14 +1359,14 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
     const list = commentList(rec);
     if (!list.length){
       const base = otherAuthor(rec.author);
-      return `<p class="cm-empty">아직 댓글이 없어요.<br>${esc(nameJosa(base))} 먼저 한마디 건네 볼까요?</p>`;
+      return `<p class="cm-empty">아직 댓글이 없어요.<br>${esc(authorJosa(base))} 먼저 한마디 건네 볼까요?</p>`;
     }
     return list.map(c => `<div class="cm-item">
         ${authorMark(c.author)}
         <div class="cm-top">
-          <span class="cm-name">${esc(c.author || '지애')}</span>
+          <span class="cm-name">${esc(authorLabel(c.author))}</span>
           <span class="cm-time">${esc(cmStamp(c.createdAt))}</span>
-          <button class="cm-del" type="button" data-action="cm-del" data-cid="${esc(c.id)}" aria-label="${esc(c.author || '')} 댓글 지우기">
+          <button class="cm-del" type="button" data-action="cm-del" data-cid="${esc(c.id)}" aria-label="${esc(authorLabel(c.author))} 댓글 지우기">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
           </button>
         </div>
@@ -1366,14 +1376,14 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   function commentHintText(rec){
     const base = otherAuthor(rec.author);
     const who = state.commentAuthor || base;
-    if (who === base) return `${nameJosa(rec.author || '지애')} 남긴 기록이라 ${nameRo(base)} 골라 두었어요. 바꿔도 괜찮아요.`;
-    return `${who} 이름으로 남아요.`;
+    if (who === base) return `${authorJosa(rec.author)} 남긴 기록이라 ${authorRo(base)} 골라 두었어요. 바꿔도 괜찮아요.`;
+    return `${authorLabel(who)} 이름으로 남아요.`;
   }
   function commentsHTML(rec){
     const list = commentList(rec);
     const base = otherAuthor(rec.author);
     const who = state.commentAuthor || base;
-    const seg = ['지애', '인웅'].map(a => `<button type="button" data-action="cm-author" data-author="${a}" class="${a === who ? 'on' : ''}" aria-pressed="${a === who}"><span class="av">${a === '인웅' ? '인' : '지'}</span>${a}</button>`).join('');
+    const seg = ['지애', '인웅'].map(a => `<button type="button" data-action="cm-author" data-author="${a}" class="${a === who ? 'on' : ''}" aria-pressed="${a === who}"><span class="av">${a === '인웅' ? '인' : '지'}</span>${authorLabel(a)}</button>`).join('');
     return `<section class="cm" id="cm" aria-label="댓글">
       <div class="cm-head">
         <h3><svg aria-hidden="true"><use href="#leaf-maple"></use></svg>댓글</h3>
@@ -1693,7 +1703,7 @@ main{flex:1 1 auto;width:100%;max-width:760px;margin:0 auto;padding:6px 22px 60p
   /* 홈 화면에 앱처럼 설치하기 위한 최소 서비스 워커 (캐시를 쓰지 않아 항상 최신 화면) */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js?v=comments', { scope: './', updateViaCache: 'none' }).catch(function () {});
+      navigator.serviceWorker.register('sw.js?v=inungssaem', { scope: './', updateViaCache: 'none' }).catch(function () {});
     });
   }
 </script>
